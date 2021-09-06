@@ -1,0 +1,4 @@
+# project
+
+This week we severely overestimated the average time to respond user story, and overestimated the recommended list of repositories, and the history of view repository. We managed to complete all our designated user stories for the sprint.
+For next we will break complex user stories into simpler (like our team name!) user stories, to improve efficiency, as larger stories will eventually need to be broken down regardless, when completing it, thus increasing the overall time and effort required. In addition, for the following sprint, we plan on shortening it to one week. This will result in us having a smaller workload per sprint, but also mean more frequent deliverables for the client. Furthermore, as the majority of work is completed in large chunks as a group, the weekly meetings will be more beneficial.

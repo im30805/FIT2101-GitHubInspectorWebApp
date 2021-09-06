@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Git Inspector</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Arvo|Pacifico|Mansalva|Noto+Sans|PT+Sans|Ubuntu&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-purple.min.css" />
+        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/background2.css" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
+    </head>
+
+  <body onload= "myFunction()">
+      <!-- Uses a transparent header that draws on top of the layout's background -->
+      <!-- The drawer is always open in large screens. The header is always shown,
+        even in small screens. -->
+
+      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+                  mdl-layout--fixed-header">
+        <header class="mdl-layout__header mdl-color--blue-grey-900">
+          <div class="mdl-layout__header-row">
+
+            <div class="mdl-layout-spacer"></div>
+            <nav class="mdl-navigation">
+              <a class="mdl-navigation__link" href="#headerBarTitle">Top of Page</a>
+              <a class="mdl-navigation__link tooltip" href="#myChart"> <span class="tooltiptext">Average response time per issue (hrs)</span>Graph 1</a>
+              <a class="mdl-navigation__link tooltip" href="#timeIssueClosedChart"> <span class="tooltiptext">Total time to close an issue in the Respository</span>Graph 2</a>
+              <a class="mdl-navigation__link tooltip" href="#numLinesByUser"> <span class="tooltiptext">Number of lines contributed by each member</span>Graph 3</a>
+              <a class="mdl-navigation__link tooltip" href="#linesContributed"> <span class="tooltiptext">Number of contributors per file in Repository</span>Graph 4</a>
+              <a class="mdl-navigation__link tooltip" href="#averageUpdates"> <span class="tooltiptext">Average time between updates per file</span>Graph 5</a>
+              <a class="mdl-navigation__link tooltip" href="#timeline"> <span class="tooltiptext">Timeline of work for repository</span>Graph 6</a>
+            </nav>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                        mdl-textfield--floating-label mdl-textfield--align-right">
+
+              <div class="mdl-textfield__expandable-holder">
+                <input class="mdl-textfield__input" type="text" name="sample"
+                       id="fixed-header-drawer-exp">
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="mdl-layout__drawer">
+          <span class="mdl-layout-title"></span>
+          <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="index.html">Main page</a>
+            <a class="mdl-navigation__link" href="defaultRepo.html">Recommended Respository</a>
+            <a class="mdl-navigation__link" href="search.html">Search Respository</a>
+            <a class="mdl-navigation__link" href="viewHistory.html">History</a>
+          </nav>
+        </div>
+
+
+
+
+        <main class="mdl-layout__content">
+          <div class="page-content">
+            <!-- Your content goes here -->
+            <h1 id="headerBarTitle"></h1>
+            <div id="txt1" >
+            <h2>Retrieving Live Data from GitHub Server, this could take a while.</h2>
+          <div id="fountainTextG">
+          <div id="fountainTextG_1" class="fountainTextG">L</div>
+          <div id="fountainTextG_2" class="fountainTextG">o</div>
+          <div id="fountainTextG_3" class="fountainTextG">a</div>
+          <div id="fountainTextG_4" class="fountainTextG">d</div>
+          <div id="fountainTextG_5" class="fountainTextG">i</div>
+          <div id="fountainTextG_6" class="fountainTextG">n</div>
+          <div id="fountainTextG_7" class="fountainTextG">g</div>
+          <div id="fountainTextG_8" class="fountainTextG">.</div>
+          <div id="fountainTextG_9" class="fountainTextG">.</div>
+          <div id="fountainTextG_10" class="fountainTextG">.</div>
+        </div>
+      </div>
+            <div id="loader"></div>
+          <div id= "divResult">
+              <div class="row">
+                <div class="column">
+                  <div class="card">
+                    <div id = "data1" class="data_margin"></div>
+                  </div>
+                </div>
+
+                <div class="column">
+                  <div class="card">
+                    <div id = "data2" class="data_margin"></div>
+
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="card">
+                    <div id = "data3" class="data_margin"></div>
+
+                  </div>
+                </div>
+
+                <div class="column">
+                  <div class="card">
+                    <div id = "data4" class="data_margin"></div>
+
+                  </div>
+                </div>
+
+              </div>
+
+
+            <p class = "dashed">
+            <canvas id="myChart"  width="1100" height="500"></canvas>
+            </p>
+            <p class = "dashed">
+            <canvas id="timeIssueClosedChart" width="1000" height="400"></canvas>
+          </p>
+            <p class = "dashed">
+            <canvas id="numLinesByUser"  width="1100" height="500"></canvas>
+
+          </p>
+          <p class = "dashed">
+          <canvas id="linesContributed"  width="1100" height="500"></canvas>
+        </p>
+      </p>
+      <p class = "dashed">
+      <canvas id="averageUpdates"  width="1100" height="500"></canvas>
+    </p>
+        <p class = "dashed">
+        <canvas id="timeline"  width="1100" height="500"></canvas>
+      </p>
+      </div>
+
+            <script>
+            function myFunction() {
+             let myVar = setTimeout(showPage, 40000);
+              }
+
+            function showPage() {
+            document.getElementById("txt1").style.display = "none";
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("divResult").style.display = "block";
+            }
+          </script>
+          </main>
+
+
+
+
+
+        <!--   JavaScript files:   -->
+          <script src="js/viewSearchedRepoStats.js"></script>
+          <script src="js/shared.js"></script>
+
+
+      </body>
+
+      </html>

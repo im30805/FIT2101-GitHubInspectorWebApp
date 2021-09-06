@@ -1,0 +1,18 @@
+.mdl-layout{
+  background: url('../images/git-image2.jpg');
+  height: 100%;
+
+/* Center and scale the image nicely */
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+img {
+  padding: 5px;
+  width: 70px;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+
+}
